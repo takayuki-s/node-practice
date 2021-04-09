@@ -15,7 +15,7 @@ while (x<3) {
   x++;
   console.log(x)
 }
-console.log("finish!");
+console.log("x_finish!");
 
 // non blocking
 var y = 3;
@@ -25,14 +25,14 @@ setTimeout(function() {
   console.log(y)
   }
 });
-console.log("finish!");
+console.log("y_finish!");
 
 // non blocking
-var z = 6;
-const zSet = function () {
-  while (z<9) {
-  z++;
-  console.log(z)
-  }
-};
-console.log("finish!");
+// var z = 6;
+// const zSet = function () {
+//   while (z<9) {
+//   z++;
+//   console.log(z)
+//   }
+// };
+// console.log("finish!");
