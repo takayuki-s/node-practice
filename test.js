@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
 // 接続
 connection.connect();
 
-// userdataの取得
+// userの取得
 connection.query('SELECT * from npra;', function (err, rows, fields) {
 	if (err) { console.log('err: ' + err); } 
 
@@ -20,7 +20,7 @@ connection.query('SELECT * from npra;', function (err, rows, fields) {
 
 });
 
-// userdataのカラムを取得
+// userのカラムを取得
 connection.query('SHOW COLUMNS FROM npra;', function (err, rows, fields) {
 	if (err) { console.log('err: ' + err); }
 

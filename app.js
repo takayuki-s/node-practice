@@ -18,12 +18,12 @@ connection.connect((err) => {
   console.log('success');
 });
 
-app.get('/', (req, res) => {
+app.get('', (req, res) => {
   connection.query(
     'SELECT * FROM users',
     (error, results) => {
       console.log(results);
-      res.render('hello.ejs');
+      // res.render('hello.ejs');
     }
   );
 });
