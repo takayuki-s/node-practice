@@ -1,7 +1,9 @@
 const express = require('express');
 const mysql = require('mysql');
-
 const app = express();
+
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: false}));
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -30,6 +32,16 @@ app.get('', (req, res) => {
 
 app.get('/new', (req, res) => {
   res.render('new.ejs');
+});
+
+app.post('/create', (req, res) => {
+  console.log(req.body.itemName)
+  connection.query(
+    'SELECT * FROM users',
+    (error, results) => {
+      res.render('hello.ejs', {users: results});
+    }
+  );
 });
 
 app.listen(3000);

@@ -14,8 +14,10 @@
     </div>
     <div class="item-form-wrapper">
       <p class="form-label">追加内容</p>
-      <input type="text">
-      <input type="submit" value="作成する">
+      <form action="/create" method="post">
+        <input type="text" name="userName">
+        <input type="submit" value="作成する">
+      </form>
     </div>
     <a href="" class="cancel-button">もどる</a>
   </div>
