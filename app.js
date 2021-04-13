@@ -42,7 +42,7 @@ app.post('/create', (req, res) => {
       connection.query(
         'SELECT * FROM users',
         (error, results) => {
-          res.render('hello.ejs', {users: results});
+          res.redirect('/')
         }
       );  
     }
