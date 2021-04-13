@@ -35,11 +35,16 @@ app.get('/new', (req, res) => {
 });
 
 app.post('/create', (req, res) => {
-  console.log(req.body.itemName)
   connection.query(
-    'SELECT * FROM users',
+    'INSERT INTO users (name) VALUES (?)',
+    [req.body.userName],
     (error, results) => {
-      res.render('hello.ejs', {users: results});
+      connection.query(
+        'SELECT * FROM users',
+        (error, results) => {
+          res.render('hello.ejs', {users: results});
+        }
+      );  
     }
   );
 });
