@@ -23,7 +23,7 @@ app.get('', (req, res) => {
     'SELECT * FROM users',
     (error, results) => {
       console.log(results);
-      res.render('hello.ejs');
+      res.render('hello.ejs', {users: results});
     }
   );
 });
