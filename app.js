@@ -50,8 +50,12 @@ app.post('/create', (req, res) => {
 });
 
 app.post('/delete/:id', (req, res) => {
-  console.log(req.params.id);
-  res.redirect('/');
+  connection.query(
+    'DELETE FROM users WHERE id = ?',
+    [req.params.id],
+    (error, result) => {
+      res.redirect('/');
+    });
 });
 
 
