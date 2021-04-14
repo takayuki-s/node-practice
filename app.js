@@ -49,5 +49,10 @@ app.post('/create', (req, res) => {
   );
 });
 
+app.post('/delete', (req, res) => {
+  res.redirect('/');
+});
+
+
 app.listen(3000);
 
