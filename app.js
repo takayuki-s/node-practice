@@ -69,8 +69,13 @@ app.get('/edit/:id', (req, res) => {
 });
 
 app.post('/update/:id', (req, res) => {
-  console.log(req);
-  res.redirect('/');
+  connection.query(
+    'UPDATE users SET name = ? WHERE id = ?',
+    [req.body.userName, req.params.id],
+    (error, results) => {
+      res.redirect('/')
+    }
+  );
 });
 
 app.listen(3000);
