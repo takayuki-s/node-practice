@@ -17,8 +17,8 @@
       </div>
       <div class="item-form-wrapper">
         <p class="form-label">編集内容</p>
-        <form>
-          <input type="text" value="<%= user.name %>">
+        <form action="/update/<%= user.id %>" method="post">
+          <input name="userName" type="text" value="<%= user.name %>">
           <input type="submit" value="更新する">
         </form>
       </div>

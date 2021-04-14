@@ -68,5 +68,10 @@ app.get('/edit/:id', (req, res) => {
     );
 });
 
+app.post('/update/:id', (req, res) => {
+  console.log(req);
+  res.redirect('/');
+});
+
 app.listen(3000);
 
