@@ -59,8 +59,14 @@ app.post('/delete/:id', (req, res) => {
 });
 
 app.get('/edit/:id', (req, res) => {
-  res.render('edit.ejs');
-})
+  connection.query(
+    'SELECT * FROM users WHERE id = ?',
+    [req.params.id],
+    (error, results) => {
+      res.render('edit.ejs', {user: results[0]});
+    }
+    );
+});
 
 app.listen(3000);
 
