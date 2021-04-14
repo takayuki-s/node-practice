@@ -6,6 +6,9 @@
       <div class="item-data">
         <span class="id-column"><%= user.id %></span>
         <span class="name-column"><%= user.name %></span>
+        <form action="/delete" method="post">
+          <input type="submit" value="削除">
+        </form>
       </div>
     </li>
   <% }) %>
