@@ -8,6 +8,7 @@
         <span class="name-column"><%= user.name %></span>
         <form action="/delete/<%= user.id %>" method="post">
           <input type="submit" value="削除">
+          <a href="edit/<%= user.id %>">編集</a>
         </form>
       </div>
     </li>
