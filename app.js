@@ -24,7 +24,6 @@ app.get('', (req, res) => {
   connection.query(
     'SELECT * FROM users',
     (error, results) => {
-      console.log(results);
       res.render('hello.ejs', {users: results});
     }
   );
