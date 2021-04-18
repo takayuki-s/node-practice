@@ -31,3 +31,16 @@ const add = (number1, number2) => {
 };
 // 引数に5と7を渡して関数を呼び出し
 add(5,7);
+
+
+//戻り値
+const half = (number) => {
+  // numberを2で割った値を戻り値として返す
+  return number / 2;
+};
+
+// 定数resultを定義
+const result = half(130);
+
+// 「130の半分は〇〇です」となるように出力
+console.log(`130の半分は${result}です`);
