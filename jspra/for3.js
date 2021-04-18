@@ -17,3 +17,17 @@ for (let i = 0; i < characters.length; i++) {
   console.log(`${character.age}歳です`)
   
 }
+
+const tails = [
+  {name: "グレイ", age: 18},
+  {name: "エルザ", age: 19},
+];
+
+for (let i = 0; i < tails.length; i++) {
+  
+  let chara = tails[i];
+  
+  console.log(`名前は${chara.name}です`);
+  
+  console.log(`${chara.age}歳です`);
+}
