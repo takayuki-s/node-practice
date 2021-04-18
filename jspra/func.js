@@ -6,3 +6,11 @@ const hello = function() {
 
 // 定数helloに代入された関数を呼び出し
 hello();
+
+// 定数greetにアロー関数を代入
+const greet = () => {
+  console.log("こんにちは！");
+}
+
+// 定数greetを呼び出し
+greet();
