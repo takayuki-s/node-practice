@@ -49,3 +49,23 @@ const underTwenty = tails.filter((character) => {
   return character.age < 20;
 });
 console.log(underTwenty);
+
+
+//mapメソッド　数字を２倍にして返す
+const map_numbers = [1, 2, 3, 4];
+const doubleNumbers = map_numbers.map((number) => {
+  return number * 2;
+});
+console.log(doubleNumbers);
+
+
+//mapメソッド　苗字と名前をつなげて返す
+const names = [
+  {firstName: "ルーシィ", lastName: "ハートフィリア"},
+	{firstName: "グレイ", lastName: "フルバスター"},
+	{firstName: "エルザ", lastName: "スカーレット"},
+];
+const fullNames = names.map((name) => {
+  return name.firstName + name.lastName;
+});
+console.log(fullNames);
