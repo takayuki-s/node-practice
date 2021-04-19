@@ -29,3 +29,23 @@ const foundCharacter = charas.find((chara) => {
   return chara.id === 1;
 });
 console.log(foundCharacter);
+
+
+//filterメソッド　偶数を全て探す
+const nums = [1, 2, 3, 4];
+const evenNumbers = nums.filter((number) => {
+  return number % 2 === 0;
+});
+console.log(evenNumbers);
+
+
+//filterメソッド　特定条件のキャラを全て探す
+const tails = [
+  {id: 1, name: "グレイ", age: 18},
+  {id: 2, name: "ルーシィ", age: 17},
+  {id: 3, name: "エルザ", age: 20},
+];
+const underTwenty = tails.filter((character) => {
+  return character.age < 20;
+});
+console.log(underTwenty);
