@@ -1,12 +1,12 @@
-const greet = (e) => {
+const greet = (greetingback) => {
   console.log("こんにちは");
-  console.log(e);
+  console.log(greetingback);
 };
 
 const call = (callback) => {
   console.log("コールバック関数を呼び出します。");
-  const e = "こんばんは"
-  callback(e);
+  const greeting = "こんばんは"
+  callback(greeting);
 };
 
 call(greet);
