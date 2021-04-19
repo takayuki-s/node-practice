@@ -1,4 +1,4 @@
-const greet = (e) => {
+const greet = () => {
   console.log("こんにちは");
 };
 
