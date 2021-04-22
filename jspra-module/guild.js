@@ -1,4 +1,4 @@
-class Failytail {
+class Guild {
   constructor(name, age) {
     this.name = name;
     this.age =age;
@@ -15,4 +15,5 @@ class Failytail {
   }
 }
 
-export default Failytail;
+// export default Guild;　←エラーになった
+module.exports = Guild;
