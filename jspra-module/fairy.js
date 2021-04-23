@@ -1,4 +1,4 @@
-const Guild = require("./guild.js");
+const {Guild} = require("./guild.js");
 // import Guild from "./guild"
 
 class Fairy extends Guild {
@@ -15,7 +15,7 @@ class Fairy extends Guild {
   }
 }
 
-const member = new Guild ("グレイ", 18, "アイスメイク");
+const member = new Fairy ("グレイ", 18, "アイスメイク");
 member.info();
 
 
