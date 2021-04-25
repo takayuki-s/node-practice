@@ -81,5 +81,9 @@ app.get('/login', (req, res) => {
   res.render('login.ejs');
 })
 
+app.post('/login', (req, res) => {
+  res.redirect('/list');
+})
+
 app.listen(3000);
 
