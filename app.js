@@ -22,9 +22,9 @@ connection.connect((err) => {
 
 app.get('', (req, res) => {
   connection.query(
-    'SELECT * FROM users',
+    'SELECT * FROM items',
     (error, results) => {
-      res.render('hello.ejs', {users: results});
+      res.render('hello.ejs', {items: results});
     }
   );
 });
@@ -36,7 +36,7 @@ app.get('/new', (req, res) => {
 app.post('/create', (req, res) => {
   connection.query(
     'INSERT INTO items (name) VALUES (?)',
-    [req.body.userName],
+    [req.body.itemName],
     (error, results) => {
       connection.query(
         'SELECT * FROM items',
@@ -62,7 +62,7 @@ app.get('/edit/:id', (req, res) => {
     'SELECT * FROM items WHERE id = ?',
     [req.params.id],
     (error, results) => {
-      res.render('edit.ejs', {user: results[0]});
+      res.render('edit.ejs', {item: results[0]});
     }
     );
 });
@@ -70,7 +70,7 @@ app.get('/edit/:id', (req, res) => {
 app.post('/update/:id', (req, res) => {
   connection.query(
     'UPDATE items SET name = ? WHERE id = ?',
-    [req.body.userName, req.params.id],
+    [req.body.itemName, req.params.id],
     (error, results) => {
       res.redirect('/')
     }
