@@ -35,11 +35,11 @@ app.get('/new', (req, res) => {
 
 app.post('/create', (req, res) => {
   connection.query(
-    'INSERT INTO users (name) VALUES (?)',
+    'INSERT INTO items (name) VALUES (?)',
     [req.body.userName],
     (error, results) => {
       connection.query(
-        'SELECT * FROM users',
+        'SELECT * FROM items',
         (error, results) => {
           res.redirect('/')
         }
@@ -50,7 +50,7 @@ app.post('/create', (req, res) => {
 
 app.post('/delete/:id', (req, res) => {
   connection.query(
-    'DELETE FROM users WHERE id = ?',
+    'DELETE FROM items WHERE id = ?',
     [req.params.id],
     (error, result) => {
       res.redirect('/');
@@ -59,7 +59,7 @@ app.post('/delete/:id', (req, res) => {
 
 app.get('/edit/:id', (req, res) => {
   connection.query(
-    'SELECT * FROM users WHERE id = ?',
+    'SELECT * FROM items WHERE id = ?',
     [req.params.id],
     (error, results) => {
       res.render('edit.ejs', {user: results[0]});
@@ -69,7 +69,7 @@ app.get('/edit/:id', (req, res) => {
 
 app.post('/update/:id', (req, res) => {
   connection.query(
-    'UPDATE users SET name = ? WHERE id = ?',
+    'UPDATE items SET name = ? WHERE id = ?',
     [req.body.userName, req.params.id],
     (error, results) => {
       res.redirect('/')

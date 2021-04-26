@@ -1,14 +1,14 @@
 <h1>Hello World</h1>
 
 <ul class="table-body">
-  <% users.forEach((user) => { %>
+  <% items.forEach((item) => { %>
     <li>
       <div class="item-data">
-        <span class="id-column"><%= user.id %></span>
-        <span class="name-column"><%= user.name %></span>
-        <form action="/delete/<%= user.id %>" method="post">
+        <span class="id-column"><%= item.id %></span>
+        <span class="name-column"><%= item.name %></span>
+        <form action="/delete/<%= item.id %>" method="post">
           <input type="submit" value="削除">
-          <a href="edit/<%= user.id %>">編集</a>
+          <a href="edit/<%= item.id %>">編集</a>
         </form>
       </div>
     </li>
