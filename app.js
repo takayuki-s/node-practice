@@ -93,7 +93,7 @@ app.post('/login', (req, res) => {
           console.log("認証に成功しました");
           res.redirect('/');
         } else {
-          console.log("認証に失敗しました");
+          console.log("passwordが違います");
           res.redirect('/login');
         }
       } else {
