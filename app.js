@@ -30,7 +30,7 @@ connection.connect((err) => {
 });
 
 app.get('', (req, res) => {
-  if (req.session.userIdd === undefined) {
+  if (req.session.userId === undefined) {
     console.log("ログインしていません"); 
   } else {
     console.log("ログインしています");
@@ -104,8 +104,7 @@ app.post('/login', (req, res) => {
     (error, results) => {
       if (results.length > 0) {
         if (req.body.password === results[0].password) {
-          req.session.userIdd = results[0].id;
-          console.log(req.session.userId);
+          req.session.userId = results[0].id;
           res.redirect('/');
         } else {
           res.redirect('/login');
