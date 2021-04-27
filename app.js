@@ -91,18 +91,18 @@ app.post('/login', (req, res) => {
       if (results.length > 0) {
         if (req.body.password === results[0].password) {
           console.log("認証に成功しました");
-          res.redirect('/');
+          return res.redirect('/');
         } else {
           console.log("認証に失敗しました");
-          res.redirect('/login');
+          return res.redirect('/login');
         }
       } else {
-        res.redirect('/login');
+        console.log("認証に失敗しました");
+        return res.redirect('/login');
       }
-    }
-  )
+    });
 
-  res.redirect('/');
+  // res.redirect('/');
 })
 
 app.listen(3000);
