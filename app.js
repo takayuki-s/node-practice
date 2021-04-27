@@ -30,6 +30,11 @@ connection.connect((err) => {
 });
 
 app.get('', (req, res) => {
+  if (req.session.userId === undefined) {
+    console.log("ログインしていません"); 
+  } else {
+    console.log("ログインしています");
+  }
   connection.query(
     'SELECT * FROM items',
     (error, results) => {
@@ -99,14 +104,12 @@ app.post('/login', (req, res) => {
     (error, results) => {
       if (results.length > 0) {
         if (req.body.password === results[0].password) {
-          console.log("認証に成功しました");
+          req.session.userId = results[0].id;
           res.redirect('/');
         } else {
-          console.log("passwordが違います");
           res.redirect('/login');
         }
       } else {
-        console.log("認証に失敗しました");
         res.redirect('/login');
       }
   });
