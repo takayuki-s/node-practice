@@ -1,30 +1,41 @@
-<h1>Hello World</h1>
-
-<ul class="table-body">
-  <% items.forEach((item) => { %>
-    <li>
-      <div class="item-data">
-        <span class="id-column"><%= item.id %></span>
-        <span class="name-column"><%= item.name %></span>
-        <form action="/delete/<%= item.id %>" method="post">
-          <input type="submit" value="削除">
-          <a href="edit/<%= item.id %>">編集</a>
-        </form>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BLOG</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-nav">
+        <a href="/">TOP</a>
+        <ul>
+          <li><a href="/list">記事一覧</a></li>
+          <!-- ログイン画面へのリンクを追加してください -->
+          <li><a href="/login">ログイン</a></li>
+        </ul>
       </div>
-    </li>
-  <% }) %>
-</ul>
-
-<ul>
-  <li><a href="/new" class="new-button">+ 新規作成</a></li>
-  <li><a href="/login">ログイン</a></li>
-</ul>
-
-<form action="/login" method="post">
-  <p>メールアドレス</p>
-  <input type="text" name="email">
-  <p>パスワード</p>
-  <input type="password" name="password">
-  <input type="submit" value="ログイン">
-  <a href="/list">一覧にもどる</a>
-</form>
+      <p>一覧</p>
+    </header>
+    <main>
+      <ul class="table-body">
+        <% items.forEach((item) => { %>
+          <li>
+            <div class="item-data">
+              <span class="id-column"><%= item.id %></span>
+              <span class="name-column"><%= item.name %></span>
+              <form action="/delete/<%= item.id %>" method="post">
+                <input type="submit" value="削除">
+                <a href="edit/<%= item.id %>">編集</a>
+              </form>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+      
+      <ul>
+        <li><a href="/new" class="new-button">+ 新規作成</a></li>
+      </ul>
+    </main>
+  </body>
+</html>
