@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const session = require('express-session');
 const app = express();
 
 app.use(express.static('public'));
@@ -11,6 +12,14 @@ const connection = mysql.createConnection({
   password: '',
   database: 'npra'
 });
+
+app.use(
+  session({
+    secret: 'my_secret_key',
+    resave: false,
+    saveUninitialized: false,
+  })
+)
 
 connection.connect((err) => {
   if (err) {
