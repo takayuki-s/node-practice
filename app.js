@@ -100,8 +100,7 @@ app.post('/login', (req, res) => {
         console.log("認証に失敗しました");
         res.redirect('/login');
       }
-    });
-  // res.redirect('/');
+  });
 })
 
 app.listen(3000);
