@@ -82,7 +82,7 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-  res.redirect('/list');
+  res.redirect('/');
 })
 
 app.listen(3000);
