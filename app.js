@@ -34,6 +34,7 @@ app.use((req, res, next) => {
     console.log('ログインしていません');
   } else {
     console.log('ログインしています');
+    res.locals.username = req.session.username;
   }
   next();
 })
@@ -109,6 +110,7 @@ app.post('/login', (req, res) => {
       if (results.length > 0) {
         if (req.body.password === results[0].password) {
           req.session.userId = results[0].id;
+          req.session.username = results[0].username;
           res.redirect('/');
         } else {
           res.redirect('/login');
