@@ -29,12 +29,16 @@ connection.connect((err) => {
   console.log('success');
 });
 
-app.get('', (req, res) => {
+app.use((req, res, next) => {
   if (req.session.userId === undefined) {
-    console.log("ログインしていません"); 
+    console.log('ログインしていません');
   } else {
-    console.log("ログインしています");
+    console.log('ログインしています');
   }
+  next();
+})
+
+app.get('', (req, res) => {
   connection.query(
     'SELECT * FROM items',
     (error, results) => {
