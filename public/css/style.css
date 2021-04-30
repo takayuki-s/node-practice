@@ -384,7 +384,6 @@ header > p:after {
   right: -10px;
   background-size: 148px 136px;
   background-repeat: no-repeat;
-  background-image: url('/images/wanko.svg');
 }
 
 .header-nav {
