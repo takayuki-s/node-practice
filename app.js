@@ -30,6 +30,7 @@ connection.connect((err) => {
 });
 
 app.use((req, res, next) => {
+  console.log('ログイン状態確認前');
   if (req.session.userId === undefined) {
     console.log('ログインしていません');
   } else {
@@ -37,7 +38,7 @@ app.use((req, res, next) => {
     res.locals.username = req.session.username;
   }
   next();
-})
+});
 
 app.get('', (req, res) => {
   connection.query(
