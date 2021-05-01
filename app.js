@@ -119,11 +119,15 @@ app.post('/signup', (req, res) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
-  
+
   connection.query(
     'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
     [username, email, password],
     (error, results) => {
+      req.session.userId = results.insertId;
+      req.session.username = username;
+      console.log(req.session.userId);
+      console.log(req.session.username);
       res.redirect('/');
     }
   );
