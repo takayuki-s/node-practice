@@ -31,6 +31,7 @@ connection.connect((err) => {
 
 app.use((req, res, next) => {
   if (req.session.userId === undefined) {
+    res.locals.username = "ゲスト";
   } else {
     res.locals.username = req.session.username;
   }
