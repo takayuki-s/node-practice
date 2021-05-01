@@ -97,6 +97,10 @@ app.post('/update/:id', (req, res) => {
   );
 });
 
+app.get('/signup', (req, res) => {
+  res.render('signup.ejs');
+});
+
 app.get('/login', (req, res) => {
   res.render('login.ejs');
 })
