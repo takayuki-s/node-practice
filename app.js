@@ -119,5 +119,11 @@ app.post('/login', (req, res) => {
   });
 })
 
+app.get('/logout', (req, res) => {
+  req.session.destroy((error) => {
+    res.redirect('/');
+  });
+});
+
 app.listen(3000);
 
