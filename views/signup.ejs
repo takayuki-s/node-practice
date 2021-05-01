@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <title>BLOG</title>
     <link rel="stylesheet" href="/css/style.css">
-    <script src="/send_url.js"></script>
+    <!-- <script src="/send_url.js"></script> -->
   </head>
   <body>
     <div class="sign">
       <div class="container">
-        <h1><a href="/list">BLOG</a></h1>
+        <h1><a href="/">BLOG</a></h1>
         <div class="panel">
           <h2>新規登録</h2>
-          <form>
+          <form action="/signup" method="post">
             <p>ユーザー名</p>
-            <input type="text">
+            <input type="text" name="username">
             <p>メールアドレス</p>
-            <input type="text">
+            <input type="text" name="email">
             <p>パスワード</p>
-            <input type="password">
+            <input type="password" name="password">
             <input type="submit" value="登録する">
-            <a href="/list">一覧にもどる</a>
+            <a href="/">一覧にもどる</a>
           </form>
         </div>
       </div>
