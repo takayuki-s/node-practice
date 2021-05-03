@@ -149,6 +149,13 @@ app.post('/signup',
       next();
     }
   },
+
+  (req, res, next) => {
+    console.log('メールアドレスの重複チェック');
+    next();
+    
+  },
+
   (req, res) => {
     console.log('ユーザー登録');
     const username = req.body.username;
