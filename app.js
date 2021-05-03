@@ -101,28 +101,53 @@ app.get('/signup', (req, res) => {
   res.render('signup.ejs');
 });
 
-// app.post('/signup', (req, res) => {
-//   const username = req.body.username;
-//   const email = req.body.email;
-//   const password = req.body.password;
-
-//   connection.query(
-//     'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
-//     [username, email, password],
-//     (error, results) => {
-//       req.session.userId = results.insertId;
-//       req.session.username = username;
-//       console.log(req.session.userId);
-//       console.log(req.session.username);
-//       res.redirect('/');
-//     }
-//   );
-// });
+// app.post('/signup', 
+//   (req, res, next) => {
+//     console.log('入力値の空チェック');
+//     next();
+//   },
+//   (req, res) => {
+//     console.log('ユーザー登録');
+//     const username = req.body.username;
+//     const email = req.body.email;
+//     const password = req.body.password;
+//     connection.query(
+//       'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+//       [username, email, password],
+//       (error, results) => {
+//         req.session.userId = results.insertId;
+//         req.session.username = username;
+//         res.redirect('/');
+//       }
+//     );
+//   }
+// );
 
 app.post('/signup', 
   (req, res, next) => {
     console.log('入力値の空チェック');
-    next();
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+    const errors = [];
+    
+    if (username === '') {
+      errors.push('ユーザー名が空です');
+    }
+    if (email === '') {
+      errors.push('メールアドレスが空です');
+    }
+    if (password === '') {
+      errors.push('パスワードが空です');
+    }
+    
+    console.log(errors);
+
+    if (errors.length > 0) {
+      res.redirect('/signup');
+    } else {
+      next();
+    }
   },
   (req, res) => {
     console.log('ユーザー登録');
@@ -135,7 +160,7 @@ app.post('/signup',
       (error, results) => {
         req.session.userId = results.insertId;
         req.session.username = username;
-        res.redirect('/');
+        res.redirect('/list');
       }
     );
   }
