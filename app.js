@@ -175,15 +175,17 @@ app.post('/signup',
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
-    connection.query(
-      'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
-      [username, email, password],
-      (error, results) => {
-        req.session.userId = results.insertId;
-        req.session.username = username;
-        res.redirect('/');
-      }
-    );
+    bcrypt.hash(password, 10, (error, hash) => {
+      connection.query(
+        'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+        [username, email, hash],
+        (error, results) => {
+          req.session.userId = results.insertId;
+          req.session.username = username;
+          res.redirect('/');
+        }
+      );
+    });
   }
 );
 
