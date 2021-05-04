@@ -194,26 +194,52 @@ app.get('/login', (req, res) => {
   res.render('login.ejs');
 })
 
+// app.post('/login', (req, res) => {
+//   const email = req.body.email;
+
+//   connection.query(
+//     'SELECT * FROM users WHERE email = ?',
+//     [email],
+//     (error, results) => {
+//       if (results.length > 0) {
+//         if (req.body.password === results[0].password) {
+//           req.session.userId = results[0].id;
+//           req.session.username = results[0].username;
+//           res.redirect('/');
+//         } else {
+//           res.redirect('/login');
+//         }
+//       } else {
+//         res.redirect('/login');
+//       }
+//   });
+// })
+
 app.post('/login', (req, res) => {
   const email = req.body.email;
-
   connection.query(
     'SELECT * FROM users WHERE email = ?',
     [email],
     (error, results) => {
       if (results.length > 0) {
-        if (req.body.password === results[0].password) {
-          req.session.userId = results[0].id;
-          req.session.username = results[0].username;
-          res.redirect('/');
-        } else {
-          res.redirect('/login');
-        }
+        const plain = req.body.password;
+        const hash = results[0].password;
+        bcrypt.compare(plain, hash, (error, isEqual) => {
+          if (isEqual) {
+            req.session.userId = results[0].id;
+            req.session.username = results[0].username;
+            res.redirect('/');
+          } else {
+            res.redirect('/login');
+          }
+        })
       } else {
         res.redirect('/login');
       }
-  });
-})
+    }
+  );
+});
+
 
 app.get('/logout', (req, res) => {
   req.session.destroy((error) => {
