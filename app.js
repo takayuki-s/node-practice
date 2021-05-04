@@ -181,7 +181,7 @@ app.post('/signup',
       (error, results) => {
         req.session.userId = results.insertId;
         req.session.username = username;
-        res.redirect('/list');
+        res.redirect('/');
       }
     );
   }
