@@ -103,28 +103,6 @@ app.get('/signup', (req, res) => {
   res.render('signup.ejs', {errors: []});
 });
 
-// app.post('/signup', 
-//   (req, res, next) => {
-//     console.log('入力値の空チェック');
-//     next();
-//   },
-//   (req, res) => {
-//     console.log('ユーザー登録');
-//     const username = req.body.username;
-//     const email = req.body.email;
-//     const password = req.body.password;
-//     connection.query(
-//       'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
-//       [username, email, password],
-//       (error, results) => {
-//         req.session.userId = results.insertId;
-//         req.session.username = username;
-//         res.redirect('/');
-//       }
-//     );
-//   }
-// );
-
 app.post('/signup', 
   (req, res, next) => {
     console.log('入力値の空チェック');
@@ -193,27 +171,6 @@ app.post('/signup',
 app.get('/login', (req, res) => {
   res.render('login.ejs');
 })
-
-// app.post('/login', (req, res) => {
-//   const email = req.body.email;
-
-//   connection.query(
-//     'SELECT * FROM users WHERE email = ?',
-//     [email],
-//     (error, results) => {
-//       if (results.length > 0) {
-//         if (req.body.password === results[0].password) {
-//           req.session.userId = results[0].id;
-//           req.session.username = results[0].username;
-//           res.redirect('/');
-//         } else {
-//           res.redirect('/login');
-//         }
-//       } else {
-//         res.redirect('/login');
-//       }
-//   });
-// })
 
 app.post('/login', (req, res) => {
   const email = req.body.email;
