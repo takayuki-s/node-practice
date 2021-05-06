@@ -2,7 +2,6 @@ const express = require('express');
 const mysql = require('mysql');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-
 const app = express();
 
 app.use(express.static('public'));
@@ -167,7 +166,6 @@ app.post('/signup',
   }
 );
 
-
 app.get('/login', (req, res) => {
   res.render('login.ejs');
 })
@@ -196,7 +194,6 @@ app.post('/login', (req, res) => {
     }
   );
 });
-
 
 app.get('/logout', (req, res) => {
   req.session.destroy((error) => {
